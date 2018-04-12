@@ -1,0 +1,9 @@
+
+    var page  = require('webpage').create();
+
+    page.open ('{{ input.getUrl() }}', '{{ input.getMethod() }}',function (status) {
+
+        return page.content;
+
+        phantom.exit(1);
+    });

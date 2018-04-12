@@ -1,0 +1,27 @@
+{
+    "name": "test/package",
+    "description": "Laravel package",
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": ">=7.0",
+        "illuminate/support": "5.*"
+    },
+    "author": {
+        "name": "Èrik Campobadal Forés ",
+        "email": "soc@erik.cat"
+    },
+    "autoload": {
+        "psr-4": {
+            "Test\\Package\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Test\\Package\\PackageServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
