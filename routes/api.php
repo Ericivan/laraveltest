@@ -17,6 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('redirect', 'GithubController@redirect');
+Route::get('github/user', 'GithubController@getUser');
+
+Route::get('oauth2/callback','GithubController@callback');
 Route::group([
     'prefix'=>'/v1',
 //    'middleware' => ['api']
