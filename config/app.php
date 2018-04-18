@@ -179,7 +179,7 @@ return [
 		Test\Package\PackageServiceProvider::class,
 	    Laravel\Passport\PassportServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Laravel\Horizon\HorizonServiceProvider::class,
+//        Laravel\Horizon\HorizonServiceProvider::class,
         ConsoleTVs\Bootpack\BootpackServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         \Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
