@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('oauth2/callback', 'Api\UserController@user');
+
 Route::group([
     'prefix'=>'/v1',
 //    'middleware' => ['api']
@@ -33,6 +35,7 @@ Route::group([
         Route::get('/info', 'UserController@test');
         Route::get('/queue', 'UserController@queueTest');
         Route::get('/pipe', 'UserController@create');
+        Route::get('github', 'UserController@github');
 
     });
 

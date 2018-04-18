@@ -40,7 +40,8 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "Test\\Package\\": "packages/test/package/src"
+            "Test\\Package\\": "packages/test/package/src",
+            "Github\\":"Ericivan/github-oauth2/src"
         },
         "files":[
             "app/Libraries/Helpers.php"

@@ -1,0 +1,15 @@
+{
+    "name": "zhongzhiliang/github-oauth2",
+    "authors": [
+        {
+            "name": "ericivan",
+            "email": "ericivan047@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Github\\": "src/"
+        }
+    }
+}

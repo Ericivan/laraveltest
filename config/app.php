@@ -184,6 +184,12 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         \Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         \Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
+        /*
+         * Custom Service Providers
+         */
+
+        \Github\GithubServiceProvider::class,
     ],
 
     /*
@@ -234,6 +240,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'JWTAuth' => \Tymon\JWTAuth\Facades\JWTAuth::class,
+        'Github' => \Github\Facades\Github::class,
     ],
 
 ];

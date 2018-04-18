@@ -17,6 +17,7 @@ use App\Pipes\SaySomething;
 use App\Pipes\UcFirst;
 use App\User;
 use Carbon\Carbon;
+use Github\Facades\Github;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Facades\Log;
 
@@ -77,5 +78,16 @@ class UserController extends Controller
     public function vue()
     {
         return view('vue');
+    }
+
+
+    public function github()
+    {
+        return Github::with('github')->redirect();
+    }
+
+    public function user()
+    {
+        dd('get Users');
     }
 }
