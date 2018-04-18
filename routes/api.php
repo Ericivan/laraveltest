@@ -47,6 +47,7 @@ Route::group([
         Route::get('response', 'ExtractController@responseData');
         Route::get('script', 'ExtractController@customScript');
         Route::get('dom', 'ExtractController@domElemt');
+
         Route::get('login', 'ExtractController@githubLogin');
 
 
