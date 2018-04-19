@@ -30,6 +30,9 @@ class GIthubManager extends Manager
     public function createGithubDriver()
     {
         $config = $this->app['config']['services.github'];
+        $config['guzzle'] = [
+            'verify' => __DIR__ . './cacert.pem',
+        ];
 
         return $this->buildProvider(GithubProvider::class,$config);
     }

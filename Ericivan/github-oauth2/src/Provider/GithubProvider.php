@@ -8,8 +8,10 @@
 
 namespace Github\Provider;
 
+use Github\AccessToken;
 use Github\Contracts\Provider as ProviderContract;
 use Github\Support\Str;
+use Github\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -27,6 +29,8 @@ class GithubProvider implements ProviderContract
 
     public $guzzle;
 
+    protected $userApi = 'https://api.github.com';
+
     public function __construct(Request $request,$clientId,$clientSecret,$redirectUrl,$guzzle=[])
     {
         $this->request = $request;
@@ -43,7 +47,24 @@ class GithubProvider implements ProviderContract
 
     public function user()
     {
-        // TODO: Implement user() method.
+        $token = $this->getAccessToken();
+
+        parse_str($token, $output);
+
+        $accessToken = new AccessToken($output);
+
+        $response = $this->getHttpClient()->get(
+            $this->getUserApi() . '/user?access_token=' .$accessToken->getToken()
+            )->getBody();
+
+        $users = json_decode($response->getContents(), true);
+
+        return new User($users);
+    }
+
+    protected function getUserApi()
+    {
+        return $this->userApi;
     }
 
     public function getCode()
@@ -72,13 +93,12 @@ class GithubProvider implements ProviderContract
 
     public function getAccessToken()
     {
-        $query = $this->buildQuery([
-            'client_secret' => $this->getClientSecret(),
-            'code' => $this->getCode(),
-            'state' => $this->getRequestState(),
-        ]);
 
-        $api = $this->baseApi . '/login/oauth/access_token?' . $this->buildQuery($query);
+        $api = $this->baseApi . '/login/oauth/access_token?' .$this->buildQuery([
+                'client_secret' => $this->getClientSecret(),
+                'code' => $this->getCode(),
+                'state' => $this->getRequestState(),
+            ]);
 
         $response = $this->getHttpClient()->post($api);
 

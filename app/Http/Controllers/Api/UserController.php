@@ -88,6 +88,9 @@ class UserController extends Controller
 
     public function user()
     {
-        dd('get Users');
+        /** @var \Github\User $user */
+        $user = Github::with('github')->user();
+
+        dd($user, $user->getId(), $user->getName());
     }
 }

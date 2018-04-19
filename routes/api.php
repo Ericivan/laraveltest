@@ -13,18 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
 
 Route::get('oauth2/callback', 'Api\UserController@user');
 
 
-Route::get('redirect', 'GithubController@redirect');
+
 Route::get('github/user', 'GithubController@getUser');
 
-Route::get('oauth2/callback','GithubController@callback');
+//Route::get('oauth2/callback','GithubController@callback');
 
 Route::group([
     'prefix'=>'/v1',
@@ -39,6 +39,7 @@ Route::group([
     Route::get('/search', 'ElasticSearchController@search');
 
     Route::namespace('Api')->prefix('users')->group(function () {
+        Route::get('redi', 'UserController@github');
         Route::get('/info', 'UserController@test');
         Route::get('/queue', 'UserController@queueTest');
         Route::get('/pipe', 'UserController@create');
