@@ -93,4 +93,16 @@ class UserController extends Controller
 
         dd($user, $user->getId(), $user->getName());
     }
+
+    public function info()
+    {
+        return response()->json([
+            'code' => 0,
+            'data'=>[
+                'name' => 'eric',
+                'age' => '20',
+                'gender' => 'male',
+            ]
+        ]);
+    }
 }

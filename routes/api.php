@@ -30,8 +30,8 @@ Route::group([
     'prefix'=>'/v1',
 //    'middleware' => ['api']
 ], function () {
-    Route::post('/user/login','Api\LoginController@login');
 
+    Route::post('/user/login','Api\LoginController@login');
     Route::get('/user', 'ElasticSearchController@getAllUser');
     Route::get('/index', 'ElasticSearchController@createIndex');
     Route::get('/getindex', 'ElasticSearchController@getIndex');
@@ -39,8 +39,9 @@ Route::group([
     Route::get('/search', 'ElasticSearchController@search');
 
     Route::namespace('Api')->prefix('users')->group(function () {
+        Route::get('info', 'UserController@info');
         Route::get('redi', 'UserController@github');
-        Route::get('/info', 'UserController@test');
+//        Route::get('/info', 'UserController@test');
         Route::get('/queue', 'UserController@queueTest');
         Route::get('/pipe', 'UserController@create');
         Route::get('github', 'UserController@github');

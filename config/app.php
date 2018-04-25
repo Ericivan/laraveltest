@@ -190,6 +190,7 @@ return [
          */
 
         \Github\GithubServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
     ],
 
     /*
