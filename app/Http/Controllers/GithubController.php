@@ -52,6 +52,9 @@ class GithubController extends Controller
 
     public function getUser()
     {
+        echo 1;
+
+        dd(1);
         $api = 'https://api.github.com/user?access_token=b758e07477c72bb20179eb9c8efcfdceb6a237ce';
 
 
