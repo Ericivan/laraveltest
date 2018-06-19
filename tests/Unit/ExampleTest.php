@@ -9,9 +9,12 @@ use App\Builder\CarBuilder\Part\Car;
 use App\CacheExtend\CusRedisStore;
 use App\Libraries\User\MysqlUser;
 use App\Libraries\User\UserManager;
+use App\Mail\UserMail;
 use App\Reward;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Cache\Repository;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Cache;
 
@@ -175,5 +178,18 @@ class ExampleTest extends TestCase
         dd($timeInterval);
 
         return $timeInterval;
+    }
+
+    public function testMail()
+    {
+        $user = User::first();
+
+        $when = Carbon::now()->addSeconds(10);
+
+//        Mail::queue(new UserMail($user));
+
+        Mail::later($when, new UserMail($user));
+
+
     }
 }
